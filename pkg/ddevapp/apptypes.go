@@ -197,6 +197,12 @@ func init() {
 			importFilesAction:    shopware6ImportFilesAction,
 		},
 
+		nodeps.AppTypeSymfony: {
+			appTypeDetect:       isSymfonyApp,
+			postStartAction:     symfonyPostStartAction,
+			hookDefaultComments: getSymfonyHooks,
+		},
+
 		nodeps.AppTypeTYPO3: {
 			settingsCreator:      createTypo3SettingsFile,
 			uploadDirs:           getTypo3UploadDirs,
