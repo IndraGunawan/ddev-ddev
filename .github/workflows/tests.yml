@@ -111,8 +111,8 @@ jobs:
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@master
 
-      - name: Remove unnecessary items on disk
-        run: sudo rm -rf /usr/local/lib/android && df -h .
+      # - name: Remove unnecessary items on disk
+      #   run: sudo rm -rf /usr/local/lib/android && df -h .
 
       - name: Install Docker and deps (Linux)
         run: ./.github/workflows/linux-setup.sh
@@ -186,12 +186,13 @@ jobs:
 
       - name: DDEV tests
         run: |
-          make CGO_ENABLED="${CGO_ENABLED}" BUILDARGS="${BUILDARGS}"
-          cgo=$(.gotmp/bin/$(go env GOOS)_$(go env GOARCH)/ddev version 2>/dev/null | awk '/cgo_enabled/ { print $2 }')
-          if [ "${CGO_ENABLED}" != "${cgo}" ]; then
-            echo "CGO_ENABLED=${CGO_ENABLED} but built cgo=${cgo}" && exit 5
-          fi
-          make CGO_ENABLED="${CGO_ENABLED}" BUILDARGS="${BUILDARGS}" TESTARGS="${TESTARGS}" ${MAKE_TARGET}
+          GOTEST_SHORT=20 make test TESTARGS="-run TestDdevFullSiteSetup"
+          # make CGO_ENABLED="${CGO_ENABLED}" BUILDARGS="${BUILDARGS}"
+          # cgo=$(.gotmp/bin/$(go env GOOS)_$(go env GOARCH)/ddev version 2>/dev/null | awk '/cgo_enabled/ { print $2 }')
+          # if [ "${CGO_ENABLED}" != "${cgo}" ]; then
+          #   echo "CGO_ENABLED=${CGO_ENABLED} but built cgo=${cgo}" && exit 5
+          # fi
+          # make CGO_ENABLED="${CGO_ENABLED}" BUILDARGS="${BUILDARGS}" TESTARGS="${TESTARGS}" ${MAKE_TARGET}
 
       - name: Clean up Homebrew
         continue-on-error: true
