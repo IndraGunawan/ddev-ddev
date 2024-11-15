@@ -40,330 +40,330 @@ import (
 var (
 	DdevBin   = "ddev"
 	TestSites = []testcommon.TestSite{
-		// // 0: wordpress
-		// {
-		// 	Name:                          "TestPkgWordpress",
-		// 	SourceURL:                     "https://wordpress.org/wordpress-6.0.1.tar.gz",
-		// 	ArchiveInternalExtractionPath: "wordpress/",
-		// 	FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/wordpress5.8.2_files.tar.gz",
-		// 	DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/wordpress5.8.2_db.sql.tar.gz",
-		// 	Docroot:                       "",
-		// 	Type:                          nodeps.AppTypeWordPress,
-		// 	Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/readme.html", Expect: "Welcome. WordPress is a very special project to me."},
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "this post has a photo"},
-		// 	FilesImageURI:                 "/wp-content/uploads/2021/12/DSCF0436-randy-and-nancy-with-traditional-wedding-out-fit-2048x1536.jpg",
-		// },
-		// // 1: drupal8
-		// {
-		// 	Name:                          "TestPkgDrupal8",
-		// 	SourceURL:                     "https://ftp.drupal.org/files/projects/drupal-8.9.20.tar.gz",
-		// 	ArchiveInternalExtractionPath: "drupal-8.9.20/",
-		// 	FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d8_umami.files.tar.gz",
-		// 	FilesZipballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d8_umami.files.zip",
-		// 	DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d8_umami.sql.tar.gz",
-		// 	DBZipURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d8_umami.sql.zip",
-		// 	FullSiteTarballURL:            "",
-		// 	Type:                          nodeps.AppTypeDrupal,
-		// 	Docroot:                       "",
-		// 	Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.txt", Expect: "Drupal is an open source content management platform"},
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/node/2", Expect: "Vegan chocolate and nut brownies"},
-		// 	FilesImageURI:                 "/sites/default/files/vegan-chocolate-nut-brownies.jpg",
-		// },
-		// // 2: drupal7
-		// {
-		// 	Name:                          "TestPkgDrupal7", // Drupal D7
-		// 	SourceURL:                     "https://ftp.drupal.org/files/projects/drupal-7.90.tar.gz",
-		// 	ArchiveInternalExtractionPath: "drupal-7.90/",
-		// 	FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d7test-7.59.files.tar.gz",
-		// 	DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d7test-7.87-db.tar.gz",
-		// 	FullSiteTarballURL:            "",
-		// 	Docroot:                       "",
-		// 	Type:                          nodeps.AppTypeDrupal7,
-		// 	Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.txt", Expect: "Drupal is an open source content management platform"},
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/node/1", Expect: "D7 test project, kittens edition"},
-		// 	FilesImageURI:                 "/sites/default/files/field/image/kittens-large.jpg",
-		// 	FullSiteArchiveExtPath:        "docroot/sites/default/files",
-		// },
-		// // 3: drupal6
-		// {
-		// 	Name:                          "TestPkgDrupal6",
-		// 	SourceURL:                     "https://ftp.drupal.org/files/projects/drupal-6.38.tar.gz",
-		// 	ArchiveInternalExtractionPath: "drupal-6.38/",
-		// 	DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/drupal6.38_db.tar.gz",
-		// 	FullSiteTarballURL:            "",
-		// 	FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/drupal6_files.tar.gz",
-		// 	Docroot:                       "",
-		// 	Type:                          nodeps.AppTypeDrupal6,
-		// 	Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/CHANGELOG.txt", Expect: "Drupal 6.38, 2016-02-24"},
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/node/2", Expect: "This is a story. The story is somewhat shaky"},
-		// 	FilesImageURI:                 "/sites/default/files/garland_logo.jpg",
-		// },
-		// // 4: backdrop
-		// {
-		// 	Name:                          "TestPkgBackdrop",
-		// 	SourceURL:                     "https://github.com/backdrop/backdrop/archive/1.22.0.tar.gz",
-		// 	ArchiveInternalExtractionPath: "backdrop-1.22.0/",
-		// 	DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/backdrop_db.11.0.tar.gz",
-		// 	FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/backdrop_files.11.0.tar.gz",
-		// 	FullSiteTarballURL:            "",
-		// 	Docroot:                       "",
-		// 	Type:                          nodeps.AppTypeBackdrop,
-		// 	Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.md", Expect: "Backdrop is a full-featured content management system"},
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/posts/first-post-all-about-kittens", Expect: "Lots of kittens are a good thing"},
-		// 	FilesImageURI:                 "/files/styles/large/public/field/image/kittens-large.jpg",
-		// },
-		// // 5: typo3
-		// {
-		// 	Name: "TestPkgTypo3",
-		// 	// tar -czf .tarballs/typo3v11_source.tgz --exclude=var --exclude=public/fileadmin .
-		// 	SourceURL:                     "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/typo3v11_source.tgz",
-		// 	ArchiveInternalExtractionPath: "",
-		// 	DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/typo3v11_db.sql.tar.gz",
-		// 	FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/typo3v11_fileadmin.tgz",
-		// 	FullSiteTarballURL:            "",
-		// 	Docroot:                       "public",
-		// 	Type:                          nodeps.AppTypeTYPO3,
-		// 	Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.txt", Expect: "junk readme simply for reading"},
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "This is test text for TestDdevFullSiteSetup"},
-		// 	FilesImageURI:                 "/fileadmin/user_upload/Logo.png",
-		// },
-		// // 6: magento1
-		// {
-		// 	Name:                          "testpkgmagento",
-		// 	SourceURL:                     "https://github.com/OpenMage/magento-lts/archive/refs/tags/v20.0.13.tar.gz",
-		// 	ArchiveInternalExtractionPath: "magento-lts-20.0.13/",
-		// 	DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/TestPkgMagento_db_secure_url.tar.gz",
-		// 	FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/magento_upload_files.tgz",
-		// 	FullSiteTarballURL:            "",
-		// 	Docroot:                       "",
-		// 	Type:                          nodeps.AppTypeMagento,
-		// 	Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/LICENSE.txt", Expect: `Open Software License ("OSL")`},
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "This is a demo store"},
-		// 	FilesImageURI:                 "/media/wrapping/Chrysanthemum.jpg",
-		// },
-		// // 7: magento2
-		// // Note that testpkgmagento2 code is enormous and makes this really, really slow.
-		// // Create a project named testpkgmagento2 and use the magento2 quickstart
-		// // Look at app/env.php and login at the key given by "backend->frontname" with the admin
-		// // credentials in the quickstart.
-		// // Create a product named Unicycle with a picture called unicycle.jpg
-		// // Full docs and management/upgrade at https://github.com/ddev/test-magento2
-		// {
-		// 	Name: "testpkgmagento2",
-		// 	// echo "This is a junk" >pub/junk.txt && tar -czf .tarballs/testpkgmagento2_code_no_media.magento2.4.6-p4.tgz --exclude=.ddev --exclude=var --exclude=pub/media --exclude=.tarballs --exclude=app/etc/env.php .
-		// 	SourceURL:                     "https://github.com/ddev/test-magento2/releases/download/2.4.6-p4/testpkgmagento2_code_no_media.magento2.4.6-p4.tgz",
-		// 	ArchiveInternalExtractionPath: "",
-		// 	// ddev export-db --gzip=false --file=.tarballs/db.sql && tar -czf .tarballs/testpkgmagento2.magento2.4.6-p4.db.tgz -C .tarballs db.sql
-		// 	DBTarURL: "https://github.com/ddev/test-magento2/releases/download/2.4.6-p4/testpkgmagento2.magento2.4.6-p4.db.tgz",
-		// 	// tar -czf .tarballs/testpkgmagento2_files.magento2.4.6-p4.tgz -C pub/media .
-		// 	FilesTarballURL:           "https://github.com/ddev/test-magento2/releases/download/2.4.6-p4/testpkgmagento2_files.magento2.4.6-p4.tgz",
-		// 	FullSiteTarballURL:        "",
-		// 	Docroot:                   "pub",
-		// 	Type:                      nodeps.AppTypeMagento2,
-		// 	Safe200URIWithExpectation: testcommon.URIWithExpect{URI: "/junk.txt", Expect: `This is a junk`},
-		// 	DynamicURI:                testcommon.URIWithExpect{URI: "/index.php/unicycle.html", Expect: "unicycle"},
-		// 	FilesImageURI:             "/media/catalog/product/u/n/unicycle.jpg",
-		// },
-		// // 8: drupal9
-		// {
-		// 	Name:                          "TestPkgDrupal9",
-		// 	SourceURL:                     "https://ftp.drupal.org/files/projects/drupal-9.5.10.tar.gz",
-		// 	ArchiveInternalExtractionPath: "drupal-9.5.10/",
-		// 	FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d9_umami_files.tgz",
-		// 	FilesZipballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d9_umami_files.zip",
-		// 	DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d9_umami_sql.tar.gz",
-		// 	DBZipURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d9_umami.sql.zip",
-		// 	FullSiteTarballURL:            "",
-		// 	Type:                          nodeps.AppTypeDrupal,
-		// 	Docroot:                       "",
-		// 	Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.md", Expect: "Drupal is an open source content management platform"},
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/node/1", Expect: "Deep mediterranean quiche"},
-		// 	FilesImageURI:                 "/sites/default/files/mediterranean-quiche-umami.jpg",
-		// },
-		// // 9: laravel
-		// {
-		// 	Name:                          "TestPkgLaravel",
-		// 	SourceURL:                     "https://github.com/ddev/test-laravel/archive/refs/tags/11.0.3.1.tar.gz",
-		// 	ArchiveInternalExtractionPath: "test-laravel-11.0.3.1/",
-		// 	FilesTarballURL:               "",
-		// 	FilesZipballURL:               "",
-		// 	DBTarURL:                      "https://github.com/ddev/test-laravel/releases/download/11.0.3.1/db.sql.tar.gz",
-		// 	DBZipURL:                      "",
-		// 	FullSiteTarballURL:            "",
-		// 	Type:                          nodeps.AppTypeLaravel,
-		// 	Docroot:                       "public",
-		// 	Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/static/", Expect: "This is a static HTML page"},
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "Second message"},
-		// 	FilesImageURI:                 "/static/sample-1.jpg",
-		// },
-		// // 10: shopware6
-		// {
-		// 	Name: "testpkgshopware6",
-		// 	// tar -czf .tarballs/shopware6_code.tgz --exclude=public/media .
-		// 	SourceURL:                     "https://github.com/ddev/test-shopware6/releases/download/v1.0.4/shopware6_code.tgz",
-		// 	ArchiveInternalExtractionPath: "",
-		// 	// cd public/media && tar -czf ../../.tarballs/shopware6_files.tgz .
-		// 	FilesTarballURL: "https://github.com/ddev/test-shopware6/releases/download/v1.0.4/shopware6_files.tgz",
-		// 	// ddev export-db --gzip=false --file=.tarballs/db.sql && tar -czf .tarballs/shopware6_db.sql.tar.gz -C .tarballs db.sql
-		// 	DBTarURL:                  "https://github.com/ddev/test-shopware6/releases/download/v1.0.4/shopware6_db.sql.tar.gz",
-		// 	FullSiteTarballURL:        "",
-		// 	Type:                      nodeps.AppTypeShopware6,
-		// 	Docroot:                   "public",
-		// 	Safe200URIWithExpectation: testcommon.URIWithExpect{URI: "/maintenance.html", Expect: "Our website is currently undergoing maintenance"},
-		// 	DynamicURI:                testcommon.URIWithExpect{URI: "/", Expect: "0180 - 000000"},
-		// 	FilesImageURI:             "/thumbnail/4e/6e/dc/1700858326/hemd_600x600_1920x1920.jpg",
-		// },
-		// // 11: php
-		// {
-		// 	Name:                          "TestPkgPHP",
-		// 	SourceURL:                     "https://github.com/ddev/ddev-test-php-repo/archive/refs/tags/v1.1.0.tar.gz",
-		// 	ArchiveInternalExtractionPath: "ddev-test-php-repo-1.1.0/",
-		// 	FullSiteTarballURL:            "",
-		// 	FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/drupal6_files.tar.gz",
-		// 	Docroot:                       "",
-		// 	Type:                          nodeps.AppTypePHP,
-		// 	Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.txt", Expect: "This is a simple readme."},
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/index.php", Expect: "This program makes use of the Zend Scripting Language Engine"},
-		// },
-		// // 12: drupal10
-		// {
-		// 	Name:                          "TestPkgDrupal10",
-		// 	SourceURL:                     "https://ftp.drupal.org/files/projects/drupal-10.1.6.tar.gz",
-		// 	ArchiveInternalExtractionPath: "drupal-10.1.6/",
-		// 	FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/drupal10-files.tgz",
-		// 	DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/drupal10-alpha6.sql.tar.gz",
-		// 	FullSiteTarballURL:            "",
-		// 	Type:                          nodeps.AppTypeDrupal,
-		// 	Docroot:                       "",
-		// 	Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.md", Expect: "Drupal is an open source content management platform"},
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "This is a test page"},
-		// 	FilesImageURI:                 "/sites/default/files/2022-07/Logo.png",
-		// },
-		// // 13: craftcms
-		// // Don’t use the official source file at https://craftcms.com/latest-v4.zip, as the version
-		// // changes over time meaning that it will get out of sync with the database. Instead, create
-		// // a project named `testpkgcraftcms` and follow the instructions in the Craft CMS quickstart
-		// // guide, ensuring that the page at `https://testpkgcraftcms.site.dev` works and displays the
-		// // text “Thanks for installing Craft CMS”. Since Craft’s public web folder doesn’t contain any
-		// // static HTML files, you'll need to add one at `web/test.html` that contains the text “Thanks
-		// // for testing Craft CMS”. Zip it up (as a `.zip` or `.tar.gz` file) in a folder and add the
-		// // folder name to `ArchiveInternalExtractionPath`. Export the database, compress the file (must
-		// // be a `.tar.gz` file, `.zip` will NOT work) and add to `DBTarURL`.
-		// {
-		// 	Name:                          "TestPkgCraftCms",
-		// 	SourceURL:                     "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/craft-cms-4.2.3.zip",
-		// 	ArchiveInternalExtractionPath: "cms-4.2.3/",
-		// 	FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/craftcms-4.2.3-files.tar.gz",
-		// 	DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/craftcms-4.2.3-db.sql.tar.gz",
-		// 	FullSiteTarballURL:            "",
-		// 	Type:                          nodeps.AppTypeCraftCms,
-		// 	Docroot:                       "web",
-		// 	Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/test.html", Expect: "Thanks for testing Craft CMS"},
-		// 	UploadDirs:                    []string{"files"},
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "Thanks for installing Craft CMS"},
-		// 	FilesImageURI:                 "/files/happy-brad.jpg",
-		// },
+		// 0: wordpress
+		{
+			Name:                          "TestPkgWordpress",
+			SourceURL:                     "https://wordpress.org/wordpress-6.0.1.tar.gz",
+			ArchiveInternalExtractionPath: "wordpress/",
+			FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/wordpress5.8.2_files.tar.gz",
+			DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/wordpress5.8.2_db.sql.tar.gz",
+			Docroot:                       "",
+			Type:                          nodeps.AppTypeWordPress,
+			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/readme.html", Expect: "Welcome. WordPress is a very special project to me."},
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "this post has a photo"},
+			FilesImageURI:                 "/wp-content/uploads/2021/12/DSCF0436-randy-and-nancy-with-traditional-wedding-out-fit-2048x1536.jpg",
+		},
+		// 1: drupal8
+		{
+			Name:                          "TestPkgDrupal8",
+			SourceURL:                     "https://ftp.drupal.org/files/projects/drupal-8.9.20.tar.gz",
+			ArchiveInternalExtractionPath: "drupal-8.9.20/",
+			FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d8_umami.files.tar.gz",
+			FilesZipballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d8_umami.files.zip",
+			DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d8_umami.sql.tar.gz",
+			DBZipURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d8_umami.sql.zip",
+			FullSiteTarballURL:            "",
+			Type:                          nodeps.AppTypeDrupal,
+			Docroot:                       "",
+			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.txt", Expect: "Drupal is an open source content management platform"},
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/node/2", Expect: "Vegan chocolate and nut brownies"},
+			FilesImageURI:                 "/sites/default/files/vegan-chocolate-nut-brownies.jpg",
+		},
+		// 2: drupal7
+		{
+			Name:                          "TestPkgDrupal7", // Drupal D7
+			SourceURL:                     "https://ftp.drupal.org/files/projects/drupal-7.90.tar.gz",
+			ArchiveInternalExtractionPath: "drupal-7.90/",
+			FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d7test-7.59.files.tar.gz",
+			DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d7test-7.87-db.tar.gz",
+			FullSiteTarballURL:            "",
+			Docroot:                       "",
+			Type:                          nodeps.AppTypeDrupal7,
+			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.txt", Expect: "Drupal is an open source content management platform"},
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/node/1", Expect: "D7 test project, kittens edition"},
+			FilesImageURI:                 "/sites/default/files/field/image/kittens-large.jpg",
+			FullSiteArchiveExtPath:        "docroot/sites/default/files",
+		},
+		// 3: drupal6
+		{
+			Name:                          "TestPkgDrupal6",
+			SourceURL:                     "https://ftp.drupal.org/files/projects/drupal-6.38.tar.gz",
+			ArchiveInternalExtractionPath: "drupal-6.38/",
+			DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/drupal6.38_db.tar.gz",
+			FullSiteTarballURL:            "",
+			FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/drupal6_files.tar.gz",
+			Docroot:                       "",
+			Type:                          nodeps.AppTypeDrupal6,
+			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/CHANGELOG.txt", Expect: "Drupal 6.38, 2016-02-24"},
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/node/2", Expect: "This is a story. The story is somewhat shaky"},
+			FilesImageURI:                 "/sites/default/files/garland_logo.jpg",
+		},
+		// 4: backdrop
+		{
+			Name:                          "TestPkgBackdrop",
+			SourceURL:                     "https://github.com/backdrop/backdrop/archive/1.22.0.tar.gz",
+			ArchiveInternalExtractionPath: "backdrop-1.22.0/",
+			DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/backdrop_db.11.0.tar.gz",
+			FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/backdrop_files.11.0.tar.gz",
+			FullSiteTarballURL:            "",
+			Docroot:                       "",
+			Type:                          nodeps.AppTypeBackdrop,
+			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.md", Expect: "Backdrop is a full-featured content management system"},
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/posts/first-post-all-about-kittens", Expect: "Lots of kittens are a good thing"},
+			FilesImageURI:                 "/files/styles/large/public/field/image/kittens-large.jpg",
+		},
+		// 5: typo3
+		{
+			Name: "TestPkgTypo3",
+			// tar -czf .tarballs/typo3v11_source.tgz --exclude=var --exclude=public/fileadmin .
+			SourceURL:                     "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/typo3v11_source.tgz",
+			ArchiveInternalExtractionPath: "",
+			DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/typo3v11_db.sql.tar.gz",
+			FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/typo3v11_fileadmin.tgz",
+			FullSiteTarballURL:            "",
+			Docroot:                       "public",
+			Type:                          nodeps.AppTypeTYPO3,
+			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.txt", Expect: "junk readme simply for reading"},
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "This is test text for TestDdevFullSiteSetup"},
+			FilesImageURI:                 "/fileadmin/user_upload/Logo.png",
+		},
+		// 6: magento1
+		{
+			Name:                          "testpkgmagento",
+			SourceURL:                     "https://github.com/OpenMage/magento-lts/archive/refs/tags/v20.0.13.tar.gz",
+			ArchiveInternalExtractionPath: "magento-lts-20.0.13/",
+			DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/TestPkgMagento_db_secure_url.tar.gz",
+			FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/magento_upload_files.tgz",
+			FullSiteTarballURL:            "",
+			Docroot:                       "",
+			Type:                          nodeps.AppTypeMagento,
+			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/LICENSE.txt", Expect: `Open Software License ("OSL")`},
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "This is a demo store"},
+			FilesImageURI:                 "/media/wrapping/Chrysanthemum.jpg",
+		},
+		// 7: magento2
+		// Note that testpkgmagento2 code is enormous and makes this really, really slow.
+		// Create a project named testpkgmagento2 and use the magento2 quickstart
+		// Look at app/env.php and login at the key given by "backend->frontname" with the admin
+		// credentials in the quickstart.
+		// Create a product named Unicycle with a picture called unicycle.jpg
+		// Full docs and management/upgrade at https://github.com/ddev/test-magento2
+		{
+			Name: "testpkgmagento2",
+			// echo "This is a junk" >pub/junk.txt && tar -czf .tarballs/testpkgmagento2_code_no_media.magento2.4.6-p4.tgz --exclude=.ddev --exclude=var --exclude=pub/media --exclude=.tarballs --exclude=app/etc/env.php .
+			SourceURL:                     "https://github.com/ddev/test-magento2/releases/download/2.4.6-p4/testpkgmagento2_code_no_media.magento2.4.6-p4.tgz",
+			ArchiveInternalExtractionPath: "",
+			// ddev export-db --gzip=false --file=.tarballs/db.sql && tar -czf .tarballs/testpkgmagento2.magento2.4.6-p4.db.tgz -C .tarballs db.sql
+			DBTarURL: "https://github.com/ddev/test-magento2/releases/download/2.4.6-p4/testpkgmagento2.magento2.4.6-p4.db.tgz",
+			// tar -czf .tarballs/testpkgmagento2_files.magento2.4.6-p4.tgz -C pub/media .
+			FilesTarballURL:           "https://github.com/ddev/test-magento2/releases/download/2.4.6-p4/testpkgmagento2_files.magento2.4.6-p4.tgz",
+			FullSiteTarballURL:        "",
+			Docroot:                   "pub",
+			Type:                      nodeps.AppTypeMagento2,
+			Safe200URIWithExpectation: testcommon.URIWithExpect{URI: "/junk.txt", Expect: `This is a junk`},
+			DynamicURI:                testcommon.URIWithExpect{URI: "/index.php/unicycle.html", Expect: "unicycle"},
+			FilesImageURI:             "/media/catalog/product/u/n/unicycle.jpg",
+		},
+		// 8: drupal9
+		{
+			Name:                          "TestPkgDrupal9",
+			SourceURL:                     "https://ftp.drupal.org/files/projects/drupal-9.5.10.tar.gz",
+			ArchiveInternalExtractionPath: "drupal-9.5.10/",
+			FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d9_umami_files.tgz",
+			FilesZipballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d9_umami_files.zip",
+			DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d9_umami_sql.tar.gz",
+			DBZipURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/d9_umami.sql.zip",
+			FullSiteTarballURL:            "",
+			Type:                          nodeps.AppTypeDrupal,
+			Docroot:                       "",
+			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.md", Expect: "Drupal is an open source content management platform"},
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/node/1", Expect: "Deep mediterranean quiche"},
+			FilesImageURI:                 "/sites/default/files/mediterranean-quiche-umami.jpg",
+		},
+		// 9: laravel
+		{
+			Name:                          "TestPkgLaravel",
+			SourceURL:                     "https://github.com/ddev/test-laravel/archive/refs/tags/11.0.3.1.tar.gz",
+			ArchiveInternalExtractionPath: "test-laravel-11.0.3.1/",
+			FilesTarballURL:               "",
+			FilesZipballURL:               "",
+			DBTarURL:                      "https://github.com/ddev/test-laravel/releases/download/11.0.3.1/db.sql.tar.gz",
+			DBZipURL:                      "",
+			FullSiteTarballURL:            "",
+			Type:                          nodeps.AppTypeLaravel,
+			Docroot:                       "public",
+			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/static/", Expect: "This is a static HTML page"},
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "Second message"},
+			FilesImageURI:                 "/static/sample-1.jpg",
+		},
+		// 10: shopware6
+		{
+			Name: "testpkgshopware6",
+			// tar -czf .tarballs/shopware6_code.tgz --exclude=public/media .
+			SourceURL:                     "https://github.com/ddev/test-shopware6/releases/download/v1.0.4/shopware6_code.tgz",
+			ArchiveInternalExtractionPath: "",
+			// cd public/media && tar -czf ../../.tarballs/shopware6_files.tgz .
+			FilesTarballURL: "https://github.com/ddev/test-shopware6/releases/download/v1.0.4/shopware6_files.tgz",
+			// ddev export-db --gzip=false --file=.tarballs/db.sql && tar -czf .tarballs/shopware6_db.sql.tar.gz -C .tarballs db.sql
+			DBTarURL:                  "https://github.com/ddev/test-shopware6/releases/download/v1.0.4/shopware6_db.sql.tar.gz",
+			FullSiteTarballURL:        "",
+			Type:                      nodeps.AppTypeShopware6,
+			Docroot:                   "public",
+			Safe200URIWithExpectation: testcommon.URIWithExpect{URI: "/maintenance.html", Expect: "Our website is currently undergoing maintenance"},
+			DynamicURI:                testcommon.URIWithExpect{URI: "/", Expect: "0180 - 000000"},
+			FilesImageURI:             "/thumbnail/4e/6e/dc/1700858326/hemd_600x600_1920x1920.jpg",
+		},
+		// 11: php
+		{
+			Name:                          "TestPkgPHP",
+			SourceURL:                     "https://github.com/ddev/ddev-test-php-repo/archive/refs/tags/v1.1.0.tar.gz",
+			ArchiveInternalExtractionPath: "ddev-test-php-repo-1.1.0/",
+			FullSiteTarballURL:            "",
+			FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/drupal6_files.tar.gz",
+			Docroot:                       "",
+			Type:                          nodeps.AppTypePHP,
+			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.txt", Expect: "This is a simple readme."},
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/index.php", Expect: "This program makes use of the Zend Scripting Language Engine"},
+		},
+		// 12: drupal10
+		{
+			Name:                          "TestPkgDrupal10",
+			SourceURL:                     "https://ftp.drupal.org/files/projects/drupal-10.1.6.tar.gz",
+			ArchiveInternalExtractionPath: "drupal-10.1.6/",
+			FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/drupal10-files.tgz",
+			DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/drupal10-alpha6.sql.tar.gz",
+			FullSiteTarballURL:            "",
+			Type:                          nodeps.AppTypeDrupal,
+			Docroot:                       "",
+			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.md", Expect: "Drupal is an open source content management platform"},
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "This is a test page"},
+			FilesImageURI:                 "/sites/default/files/2022-07/Logo.png",
+		},
+		// 13: craftcms
+		// Don’t use the official source file at https://craftcms.com/latest-v4.zip, as the version
+		// changes over time meaning that it will get out of sync with the database. Instead, create
+		// a project named `testpkgcraftcms` and follow the instructions in the Craft CMS quickstart
+		// guide, ensuring that the page at `https://testpkgcraftcms.site.dev` works and displays the
+		// text “Thanks for installing Craft CMS”. Since Craft’s public web folder doesn’t contain any
+		// static HTML files, you'll need to add one at `web/test.html` that contains the text “Thanks
+		// for testing Craft CMS”. Zip it up (as a `.zip` or `.tar.gz` file) in a folder and add the
+		// folder name to `ArchiveInternalExtractionPath`. Export the database, compress the file (must
+		// be a `.tar.gz` file, `.zip` will NOT work) and add to `DBTarURL`.
+		{
+			Name:                          "TestPkgCraftCms",
+			SourceURL:                     "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/craft-cms-4.2.3.zip",
+			ArchiveInternalExtractionPath: "cms-4.2.3/",
+			FilesTarballURL:               "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/craftcms-4.2.3-files.tar.gz",
+			DBTarURL:                      "https://github.com/ddev/ddev_test_tarballs/releases/download/v1.1/craftcms-4.2.3-db.sql.tar.gz",
+			FullSiteTarballURL:            "",
+			Type:                          nodeps.AppTypeCraftCms,
+			Docroot:                       "web",
+			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/test.html", Expect: "Thanks for testing Craft CMS"},
+			UploadDirs:                    []string{"files"},
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "Thanks for installing Craft CMS"},
+			FilesImageURI:                 "/files/happy-brad.jpg",
+		},
 
-		// // 14: python generic
-		// // Uses https://github.com/ddev/test-flask-sayhello fork of
-		// // https://github.com/greyli/sayhello - no database download required
-		// {
-		// 	Name:                          "TestPkgPython",
-		// 	SourceURL:                     "https://github.com/ddev/test-flask-sayhello/archive/refs/tags/v1.0.1.tar.gz",
-		// 	ArchiveInternalExtractionPath: "test-flask-sayhello-1.0.1/",
-		// 	DBTarURL:                      "",
-		// 	FullSiteTarballURL:            "",
-		// 	PretestCmd:                    "ddev exec flask forge",
-		// 	WebEnvironment: []string{
-		// 		"DATABASE_URI=postgresql://db:db@db/db",
-		// 		"WSGI_APP=sayhello:app",
-		// 	},
-		// 	Type:    nodeps.AppTypePython,
-		// 	Docroot: "",
-		// 	//Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/test.html", Expect: ""},
-		// 	//UploadDir:                     "files",
-		// 	DynamicURI:    testcommon.URIWithExpect{URI: "/", Expect: "20 messages"},
-		// 	FilesImageURI: "",
-		// },
+		// 14: python generic
+		// Uses https://github.com/ddev/test-flask-sayhello fork of
+		// https://github.com/greyli/sayhello - no database download required
+		{
+			Name:                          "TestPkgPython",
+			SourceURL:                     "https://github.com/ddev/test-flask-sayhello/archive/refs/tags/v1.0.1.tar.gz",
+			ArchiveInternalExtractionPath: "test-flask-sayhello-1.0.1/",
+			DBTarURL:                      "",
+			FullSiteTarballURL:            "",
+			PretestCmd:                    "ddev exec flask forge",
+			WebEnvironment: []string{
+				"DATABASE_URI=postgresql://db:db@db/db",
+				"WSGI_APP=sayhello:app",
+			},
+			Type:    nodeps.AppTypePython,
+			Docroot: "",
+			//Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/test.html", Expect: ""},
+			//UploadDir:                     "files",
+			DynamicURI:    testcommon.URIWithExpect{URI: "/", Expect: "20 messages"},
+			FilesImageURI: "",
+		},
 
-		// // 15: Django 4
-		// // Uses https://github.com/ddev/test-django4-bakerydemo fork of
-		// // https://github.com/wagtail/bakerydemo - no database download required
-		// {
-		// 	Name:                          "TestPkgDjango4",
-		// 	SourceURL:                     "https://github.com/ddev/test-django4-bakerydemo/archive/refs/tags/v1.0.1.tar.gz",
-		// 	ArchiveInternalExtractionPath: "test-django4-bakerydemo-1.0.1/",
-		// 	DBTarURL:                      "",
-		// 	FullSiteTarballURL:            "",
-		// 	PretestCmd:                    "touch .env && ddev python manage.py migrate >/dev/null && ddev python manage.py load_initial_data && ddev exec pkill -1 gunicorn",
-		// 	WebEnvironment: []string{
-		// 		"DJANGO_SETTINGS_MODULE=bakerydemo.settings.dev",
-		// 	},
-		// 	Type:    nodeps.AppTypeDjango4,
-		// 	Docroot: "",
-		// 	//Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/test.html", Expect: ""},
-		// 	//UploadDir:                     "files",
-		// 	DynamicURI:    testcommon.URIWithExpect{URI: "/", Expect: "Welcome to the Wagtail Bakery"},
-		// 	FilesImageURI: "/media/images/Anadama_bread_1.2e16d0ba.fill-180x180-c100.jpg",
-		// },
+		// 15: Django 4
+		// Uses https://github.com/ddev/test-django4-bakerydemo fork of
+		// https://github.com/wagtail/bakerydemo - no database download required
+		{
+			Name:                          "TestPkgDjango4",
+			SourceURL:                     "https://github.com/ddev/test-django4-bakerydemo/archive/refs/tags/v1.0.1.tar.gz",
+			ArchiveInternalExtractionPath: "test-django4-bakerydemo-1.0.1/",
+			DBTarURL:                      "",
+			FullSiteTarballURL:            "",
+			PretestCmd:                    "touch .env && ddev python manage.py migrate >/dev/null && ddev python manage.py load_initial_data && ddev exec pkill -1 gunicorn",
+			WebEnvironment: []string{
+				"DJANGO_SETTINGS_MODULE=bakerydemo.settings.dev",
+			},
+			Type:    nodeps.AppTypeDjango4,
+			Docroot: "",
+			//Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/test.html", Expect: ""},
+			//UploadDir:                     "files",
+			DynamicURI:    testcommon.URIWithExpect{URI: "/", Expect: "Welcome to the Wagtail Bakery"},
+			FilesImageURI: "/media/images/Anadama_bread_1.2e16d0ba.fill-180x180-c100.jpg",
+		},
 
-		// // 16: Platform django4 template without DJANGO_SETTINGS_MODULE
-		// // Here it has to use the settings file it finds and update that.
-		// // Uses https://github.com/ddev/test-platformsh-templates-django4 fork of
-		// // https://github.com/platformsh-templates/django4 without doing anything to it
-		// {
-		// 	Name:                          "TestPkgPlatformDjango4",
-		// 	SourceURL:                     "https://github.com/ddev/test-platformsh-templates-django4/archive/refs/tags/v1.0.0.tar.gz",
-		// 	ArchiveInternalExtractionPath: "test-platformsh-templates-django4-1.0.0/",
-		// 	DBTarURL:                      "",
-		// 	FullSiteTarballURL:            "",
-		// 	Type:                          nodeps.AppTypeDjango4,
-		// 	Docroot:                       "",
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "Hello, and welcome to the"},
-		// },
-		// // 17: Silverstripe
-		// {
-		// 	Name:                          "TestPkgSilverstripe",
-		// 	SourceURL:                     "https://github.com/ddev/test-silverstripe/releases/download/1.0.0/silverstripe-base.tar.gz",
-		// 	DBTarURL:                      "https://github.com/ddev/test-silverstripe/releases/download/1.0.0/db.tar.gz",
-		// 	ArchiveInternalExtractionPath: "",
-		// 	FullSiteTarballURL:            "",
-		// 	FilesTarballURL:               "",
-		// 	Docroot:                       "public",
-		// 	Type:                          nodeps.AppTypeSilverstripe,
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "<meta name=\"generator\" content=\"Silverstripe CMS 5.0\">"},
-		// },
-		// // 18: CakePHP
-		// {
-		// 	Name:                          "TestPkgCakePHP",
-		// 	SourceURL:                     "https://github.com/ddev/test-cakephp/archive/refs/tags/5.0.1.1.tar.gz",
-		// 	ArchiveInternalExtractionPath: "test-cakephp-5.0.1.1/",
-		// 	FilesTarballURL:               "",
-		// 	FilesZipballURL:               "",
-		// 	DBTarURL:                      "https://github.com/ddev/test-cakephp/releases/download/5.0.1.1/db.sql.tar.gz",
-		// 	DBZipURL:                      "",
-		// 	FullSiteTarballURL:            "",
-		// 	Type:                          nodeps.AppTypeCakePHP,
-		// 	Docroot:                       "webroot",
-		// 	Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/static/page.html", Expect: "This is a static page"},
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "CakePHP is able to connect to the database"},
-		// 	FilesImageURI:                 "/img/cake.logo.svg",
-		// },
-		// // 19: drupal11
-		// {
-		// 	Name:                          "TestPkgDrupal11",
-		// 	SourceURL:                     "https://github.com/ddev/test-drupal11/archive/refs/tags/11.0.0.tar.gz",
-		// 	ArchiveInternalExtractionPath: "test-drupal11-11.0.0/",
-		// 	FilesTarballURL:               "https://github.com/ddev/test-drupal11/releases/download/11.0.0/files.tgz",
-		// 	DBTarURL:                      "https://github.com/ddev/test-drupal11/releases/download/11.0.0/db.sql.tar.gz",
-		// 	FullSiteTarballURL:            "",
-		// 	Type:                          nodeps.AppTypeDrupal,
-		// 	Docroot:                       "web",
-		// 	Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.md", Expect: "Drupal is an open source content management platform"},
-		// 	DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "Super easy vegetarian pasta bake TEST PROJECT"},
-		// 	FilesImageURI:                 "/sites/default/files/Logo.png",
-		// },
-		// // 20: Symfony
+		// 16: Platform django4 template without DJANGO_SETTINGS_MODULE
+		// Here it has to use the settings file it finds and update that.
+		// Uses https://github.com/ddev/test-platformsh-templates-django4 fork of
+		// https://github.com/platformsh-templates/django4 without doing anything to it
+		{
+			Name:                          "TestPkgPlatformDjango4",
+			SourceURL:                     "https://github.com/ddev/test-platformsh-templates-django4/archive/refs/tags/v1.0.0.tar.gz",
+			ArchiveInternalExtractionPath: "test-platformsh-templates-django4-1.0.0/",
+			DBTarURL:                      "",
+			FullSiteTarballURL:            "",
+			Type:                          nodeps.AppTypeDjango4,
+			Docroot:                       "",
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "Hello, and welcome to the"},
+		},
+		// 17: Silverstripe
+		{
+			Name:                          "TestPkgSilverstripe",
+			SourceURL:                     "https://github.com/ddev/test-silverstripe/releases/download/1.0.0/silverstripe-base.tar.gz",
+			DBTarURL:                      "https://github.com/ddev/test-silverstripe/releases/download/1.0.0/db.tar.gz",
+			ArchiveInternalExtractionPath: "",
+			FullSiteTarballURL:            "",
+			FilesTarballURL:               "",
+			Docroot:                       "public",
+			Type:                          nodeps.AppTypeSilverstripe,
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "<meta name=\"generator\" content=\"Silverstripe CMS 5.0\">"},
+		},
+		// 18: CakePHP
+		{
+			Name:                          "TestPkgCakePHP",
+			SourceURL:                     "https://github.com/ddev/test-cakephp/archive/refs/tags/5.0.1.1.tar.gz",
+			ArchiveInternalExtractionPath: "test-cakephp-5.0.1.1/",
+			FilesTarballURL:               "",
+			FilesZipballURL:               "",
+			DBTarURL:                      "https://github.com/ddev/test-cakephp/releases/download/5.0.1.1/db.sql.tar.gz",
+			DBZipURL:                      "",
+			FullSiteTarballURL:            "",
+			Type:                          nodeps.AppTypeCakePHP,
+			Docroot:                       "webroot",
+			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/static/page.html", Expect: "This is a static page"},
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "CakePHP is able to connect to the database"},
+			FilesImageURI:                 "/img/cake.logo.svg",
+		},
+		// 19: drupal11
+		{
+			Name:                          "TestPkgDrupal11",
+			SourceURL:                     "https://github.com/ddev/test-drupal11/archive/refs/tags/11.0.0.tar.gz",
+			ArchiveInternalExtractionPath: "test-drupal11-11.0.0/",
+			FilesTarballURL:               "https://github.com/ddev/test-drupal11/releases/download/11.0.0/files.tgz",
+			DBTarURL:                      "https://github.com/ddev/test-drupal11/releases/download/11.0.0/db.sql.tar.gz",
+			FullSiteTarballURL:            "",
+			Type:                          nodeps.AppTypeDrupal,
+			Docroot:                       "web",
+			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/README.md", Expect: "Drupal is an open source content management platform"},
+			DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "Super easy vegetarian pasta bake TEST PROJECT"},
+			FilesImageURI:                 "/sites/default/files/Logo.png",
+		},
+		// 20: Symfony
 		{
 			Name:                          "TestPkgSymfony",
 			SourceURL:                     "https://github.com/symfony/demo/archive/refs/tags/v2.6.0.tar.gz",
