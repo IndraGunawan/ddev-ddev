@@ -373,6 +373,7 @@ var (
 			Safe200URIWithExpectation:     testcommon.URIWithExpect{URI: "/robots.txt", Expect: "User-agent"},
 			DynamicURI:                    testcommon.URIWithExpect{URI: "/", Expect: "Welcome to the Symfony Demo application"},
 			FilesImageURI:                 "/apple-touch-icon.png",
+			PretestCmd:                    "ddev composer install",
 			WebEnvironment: []string{
 				"APP_SECRET=1234567890",
 			},
