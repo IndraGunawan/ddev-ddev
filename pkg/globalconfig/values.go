@@ -22,8 +22,8 @@ var ValidOmitContainers = map[string]bool{
 	DdevSSHAgentContainer: true,
 }
 
-// DdevNoInstrumentation is set to true if the env var is set
-var DdevNoInstrumentation = os.Getenv("DDEV_NO_INSTRUMENTATION") == "true"
+// DdevNoInstrumentation is set to true if the env var is set or it runs on a ci pipeline
+var DdevNoInstrumentation = os.Getenv("DDEV_NO_INSTRUMENTATION") == "true" || os.Getenv("CI") == "true"
 
 // DdevDebug is set to true if the env var is set
 var DdevDebug = (os.Getenv("DDEV_DEBUG") == "true")
